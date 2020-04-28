@@ -51,10 +51,24 @@
 
 // Constraints:
 
-// 1 <= n <= 10^5
+// 1 <= n <= 10^5˚
 
 var differenceProductSum = (number) => {
-  console.log(number)
+  if (typeof number !== 'number'){
+    return 'not a number'
+  }
+var numString = number.toString();
+var numberArr = numString.split('')
+
+var sum = 0;
+var product = 1;
+for (var i = 0; i < numberArr.length; i++){
+  sum+=Number(numberArr[i]);
+  product*=numberArr[i];
+}
+
+return product - sum;
+
 } 
 
 
@@ -70,3 +84,10 @@ let example1 = 4321;
 var expected1 = 14;
 var actual1 = differenceProductSum(example1)
 assertEqual(actual1, expected1)
+
+
+let example2 = 'blam';
+var expected2 = 'not a number';
+var actual2 = differenceProductSum(example2)
+assertEqual(actual2, expected2)
+
