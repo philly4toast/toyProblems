@@ -40,26 +40,46 @@ var numberOfSteps  = function(num) {
       return "Unacceptable number"
     }
     var currentNum = num;
-    while (currentNum > 2){
+
+    while (currentNum > 0){
       if (currentNum % 2 === 0){
         currentNum = currentNum / 2
         count++;
+      }else if ( currentNum % 2 === 1){
+        currentNum = currentNum-1;
+        count++
       }
-      currentNum = currentNum-1;
-      count++
     }
   return count;
 };
 
 
 var assertEqual = (actual, expected, testName) => {
-  console.log(actual === expected ? 'passed' : 'Failed ' + testName + '. Expected ' + expected + ', but got ' + actual + '.')
+  console.log(actual === expected ? 'passed ' + testName : 'Failed ' + testName + '. Expected ' + expected + ', but got ' + actual + '.')
 } 
 
 var num1 = 14;
 var exp1 = 6;
-var act1 = numberOfSteps(14);
+var act1 = numberOfSteps(num1);
+assertEqual(act1, exp1, 'initial test of simple number 14')
 
-// assertEqual(act1, exp1, 'initial test of simple number 14')
+var num2 = 123;
+var exp2 = 12;
+var act2 = numberOfSteps(num2);
+assertEqual(act2, exp2, 'second test of 123')
 
-console.log(numberOfSteps(123))
+var num3 = 8;
+var exp3 = 4;
+var act3 = numberOfSteps(num3);
+assertEqual(act3, exp3, 'third test of 8')
+
+var num4 = -233;
+var exp4 = "Unacceptable number";
+var act4 = numberOfSteps(num4);
+assertEqual(act4, exp4, 'testing a negative number')
+
+var num5 = 100000000;
+var exp5 = "Unacceptable number";
+var act5 = numberOfSteps(num5);
+assertEqual(act5, exp5, 'testing a number too large')
+
