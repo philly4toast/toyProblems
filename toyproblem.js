@@ -28,3 +28,38 @@
 
 // Input: num = 123
 // Output: 12
+
+// Constraints:
+
+// 0 <= num <= 10^6
+
+
+var numberOfSteps  = function(num) {
+  var count = 0;
+    if (num < 0 || 1000000 < num) {
+      return "Unacceptable number"
+    }
+    var currentNum = num;
+    while (currentNum > 2){
+      if (currentNum % 2 === 0){
+        currentNum = currentNum / 2
+        count++;
+      }
+      currentNum = currentNum-1;
+      count++
+    }
+  return count;
+};
+
+
+var assertEqual = (actual, expected, testName) => {
+  console.log(actual === expected ? 'passed' : 'Failed ' + testName + '. Expected ' + expected + ', but got ' + actual + '.')
+} 
+
+var num1 = 14;
+var exp1 = 6;
+var act1 = numberOfSteps(14);
+
+// assertEqual(act1, exp1, 'initial test of simple number 14')
+
+console.log(numberOfSteps(123))
